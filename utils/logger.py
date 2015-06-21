@@ -1,25 +1,26 @@
 import os
 import logging
 import logging.handlers
+from settings.settings import FILE_LOG_LEVEL, LOG_FILE_PATH
 
-def init(filepath=None, name="log", level="INFO"):
-    filepath = filepath or 'debug.log'
-    format = ("%(asctime)s %(levelname)s [%(threadName)s] - %(message)s - (%(module)s - %(funcName)s)")
 
-    # create the log directory if it doesn't exist
+def init():
+
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter(
+        fmt='%(asctime)s %(levelname)s - (%(module)s - %(funcName)s) - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
+    filepath = LOG_FILE_PATH or 'debug.log'
     if filepath and not os.path.exists(os.path.dirname(filepath)):
         os.makedirs(os.path.dirname(filepath))
 
-    logging.basicConfig(level=getattr(logging, level),
-                        format=format,
-                        datefmt='%Y-%m-%d %H:%M:%S')
+    file_handler = logging.FileHandler(filepath)
+    file_handler.setLevel(getattr(logging, FILE_LOG_LEVEL))
+    file_handler.setFormatter(formatter)
 
-    while len(logging.getLogger().handlers) is not 0:
-        logging.getLogger().handlers.pop()
+    logging.getLogger().addHandler(file_handler)
 
-    # create the rotating file handler
-    handler = logging.FileHandler(filepath)
-    handler.setLevel(getattr(logging, level))
-    handler.setFormatter(logging.Formatter(format))
-
-    logging.getLogger().addHandler(handler)

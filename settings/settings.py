@@ -1,16 +1,8 @@
-import sys
-import os
+from os.path import abspath, join, dirname
 
-
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-
-# virtualenv settings
-PYTHON_VER = "Python%s.%s" % (sys.version_info.major, sys.version_info.minor)
-VIRTUALENV_NAME = 'venv'
-VIRTUALENV_PATH = '%s/lib/%s/site-packages/' % (VIRTUALENV_NAME, PYTHON_VER)
-VIRTUALENV_ACTIVATE_PATH = '%s/bin/activate_this.py' % VIRTUALENV_NAME
+PROJECT_ROOT = abspath(join(dirname(__file__), '..'))
 
 # logging settings
-LOG_FILEPATH = '%s/%s' % (PROJECT_ROOT, 'debug.log')
-LOG_LEVEL = 'DEBUG'
-
+DEBUG_LOG_NAME = 'debug.log'
+LOG_FILE_PATH = '{PROJECT_ROOT}/{DEBUG_LOG_NAME}'.format(**globals())
+FILE_LOG_LEVEL = 'DEBUG'

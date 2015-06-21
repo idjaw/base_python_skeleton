@@ -1,2 +1,15 @@
+backups
 *.pyc
+*.idea
+*.swp
 venv
+*.ropeproject
+*.sublime-project
+*.sublime-workspace
+*.log
+*.egg-info
+test-report.xml
+*.tox
+.idea
+*.iml
+.DS_Store

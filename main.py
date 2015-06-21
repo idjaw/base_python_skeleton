@@ -1,12 +1,13 @@
-from settings import settings
-from utils import utils
 from utils import logger
 import logging
 
-logger.init(filepath=settings.LOG_FILEPATH, level=settings.LOG_LEVEL)
+logger.init()
 log = logging.getLogger('main')
-# configure the virtualenv environment
-utils.configure_virtualenv()
 
+print('asdf')
+log.debug('this works')
+log.info('asdfasdfsadf')
+log.error('asdfasdf')
+print('asdf')
 if __name__ == '__main__':
-	pass
+    pass

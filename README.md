@@ -3,13 +3,28 @@ base_python_skeleton
 
 Basic Structure For a Python Project
 
-You can simply download the zip file of the latest commit here: https://github.com/idjaw/base_python_skeleton/archive/master.zip
+The only assumption here is that you have virtualenv already installed.
 
-Once unzipped, you just need to make sure you have virtualenv installed:
+If you don't, simply open up a shell and run
+
+```
 pip install virtualenv
+```
 
-Navigate to the root of the base_python_skeleton:
-cd %YOUR_PATH%/base_python_skeleton/
+Install and activate your virtualenv like this:
+
+```
 virtualenv venv
+source venv/bin/activate
+```
 
-you should now have a venv directory created. The base is built assuming a virtualenv named venv is created. If you use a different name other than venv, make sure you modify the settings.py file in settings/settings.py.
+You can add whatever modules you night need to your setup-requires and run:
+
+```
+pip install -r setup-requires
+```
+
+Enjoy!
+
+#### TO DO
+Want to add a mechanism to enable and configure the virtualenv upon running the application to remove the need to do any manual steps around enabling the virtualenv and installing any required modules within your venv
