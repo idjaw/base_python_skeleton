@@ -4,3 +4,4 @@ nose-exclude==0.2.0
 flexmock==0.9.7
 pyhamcrest==1.8
 mock==1.0.1
+coverage==3.7
